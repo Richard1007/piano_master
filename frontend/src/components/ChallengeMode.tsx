@@ -6,7 +6,7 @@ import Leaderboard from "./Leaderboard";
 import { PIANO_NOTES } from "../utils/notes";
 
 // Configurable parameters
-const NOTE_INTERVAL = 750; // 0.6 seconds between notes
+const NOTE_INTERVAL = 750; // seconds between notes
 const FINAL_PAUSE = 500; // 0.5 seconds before target note
 
 type Difficulty = "easy" | "hard";

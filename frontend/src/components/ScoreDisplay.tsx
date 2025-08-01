@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { addToLeaderboard } from "../utils/firebase";
 import Leaderboard from "./Leaderboard";
+import { Button } from "./common";
 
 const ScoreDisplay: React.FC<{
   score: number;
@@ -20,30 +21,13 @@ const ScoreDisplay: React.FC<{
   const percentage = (score / total) * 100;
   const timestamp = new Date().toLocaleString();
 
-  // Simple rate limiting: 1 submission per 30 seconds
-  const RATE_LIMIT_MS = 30000;
-  const lastUpload = localStorage.getItem("lastUploadTime");
-  const canUpload =
-    !lastUpload || Date.now() - parseInt(lastUpload) > RATE_LIMIT_MS;
-  const remainingTime = lastUpload
-    ? Math.max(
-        0,
-        Math.ceil((RATE_LIMIT_MS - (Date.now() - parseInt(lastUpload))) / 1000)
-      )
-    : 0;
-
   const getTitle = () => {
     if (percentage >= 50) return "🎉 Congratulations! 🎉";
-    return "🎵 Keep Going! 🎵";
+    return "✨ Keep Going! ✨";
   };
 
   const handleUploadToLeaderboard = async () => {
     if (!username.trim()) return;
-
-    if (!canUpload) {
-      alert(`Please wait ${remainingTime} seconds before uploading again.`);
-      return;
-    }
 
     setIsUploading(true);
     try {
@@ -56,7 +40,6 @@ const ScoreDisplay: React.FC<{
         timestamp: new Date().toISOString(),
       });
 
-      localStorage.setItem("lastUploadTime", Date.now().toString());
       setUploadSuccess(true);
       setShowLeaderboardForm(false);
     } catch (error) {
@@ -116,22 +99,16 @@ const ScoreDisplay: React.FC<{
 
       {!showLeaderboardForm && !uploadSuccess && !showLeaderboard && (
         <div className="action-buttons">
-          <button
-            onClick={() => setShowLeaderboardForm(true)}
-            className="btn btn-secondary"
-          >
+          <Button onClick={() => setShowLeaderboardForm(true)} variant="light">
             🏆 Upload to Leaderboard
-          </button>
-          <button
-            onClick={() => setShowLeaderboard(true)}
-            className="btn btn-secondary"
-          >
+          </Button>
+          <Button onClick={() => setShowLeaderboard(true)} variant="light">
             📊 Check Leaderboard
-          </button>
+          </Button>
           {onPlayAgain && (
-            <button onClick={onPlayAgain} className="btn btn-primary">
+            <Button onClick={onPlayAgain} variant="primary">
               Play Again
-            </button>
+            </Button>
           )}
         </div>
       )}
@@ -152,26 +129,21 @@ const ScoreDisplay: React.FC<{
             />
           </div>
           <div className="form-actions">
-            <button
+            <Button
               onClick={handleUploadToLeaderboard}
-              disabled={!username.trim() || isUploading || !canUpload}
-              className="btn btn-primary"
+              disabled={!username.trim() || isUploading}
+              variant="primary"
             >
               {isUploading ? "Uploading..." : "Upload"}
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => setShowLeaderboardForm(false)}
               disabled={isUploading}
-              className="btn btn-secondary"
+              variant="secondary"
             >
               Cancel
-            </button>
+            </Button>
           </div>
-          {!canUpload && (
-            <div className="rate-limit-warning">
-              ⏰ Please wait {remainingTime} seconds before uploading again
-            </div>
-          )}
         </div>
       )}
 
@@ -193,12 +165,13 @@ const ScoreDisplay: React.FC<{
                 <option value="correct">Correct</option>
               </select>
             </div>
-            <button
+            <Button
               onClick={() => setShowLeaderboard(false)}
-              className="btn btn-secondary btn-small"
+              variant="secondary"
+              size="small"
             >
               Close
-            </button>
+            </Button>
           </div>
           <div className="leaderboard-content">
             <Leaderboard
@@ -214,9 +187,9 @@ const ScoreDisplay: React.FC<{
         <div className="upload-success">
           <p>✅ Successfully uploaded to leaderboard!</p>
           {onPlayAgain && (
-            <button onClick={onPlayAgain} className="btn btn-primary">
+            <Button onClick={onPlayAgain} variant="primary">
               Play Again
-            </button>
+            </Button>
           )}
         </div>
       )}

@@ -78,6 +78,18 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.btn-light {
+  background: #e0e0e0;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.btn-light:hover:not(:disabled) {
+  background: #d0d0d0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Disabled state */
 .btn:disabled {
   opacity: 0.6;
