@@ -1,0 +1,69 @@
+.card {
+  background: #141414;
+  border-radius: 20px;
+  border: 1px solid #4b4b4b;
+  overflow: hidden;
+}
+
+/* Card padding variants */
+.card-none {
+  padding: 0;
+}
+
+.card-small {
+  padding: 10px;
+}
+
+.card-medium {
+  padding: 20px;
+}
+
+.card-large {
+  padding: 30px;
+}
+
+/* Card elevation variants */
+.card-none {
+  box-shadow: none;
+}
+
+.card-low {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.card-medium {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-high {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Card header */
+.card-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #4b4b4b;
+  background: #333;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Card body */
+.card-body {
+  padding: 20px;
+}
+
+/* Card footer */
+.card-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #4b4b4b;
+  background: #333;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+} 

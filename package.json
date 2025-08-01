@@ -1,0 +1,33 @@
+{
+  "name": "piano-ear-training",
+  "version": "1.0.0",
+  "description": "A modern web application for piano ear training with three modes: Intro, Playground, and Challenge",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm start",
+    "build": "cd frontend && npm run build",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "lint": "cd frontend && npm run lint",
+    "preview": "cd frontend && npm run preview",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "piano",
+    "ear-training",
+    "music",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
