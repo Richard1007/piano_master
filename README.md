@@ -28,7 +28,7 @@ An interactive music game designed to train your musical ear anytime. Inspired b
 ### Setup
 
 ```bash
-git clone https://github.com/your-username/piano-ear-training.git
+git clone https://github.com/Richard1007/piano_master.git
 cd piano-ear-training
 ```
 
@@ -53,13 +53,15 @@ Visit the app at `http://localhost:5173`
 
 ## 🔧 Firebase Integration
 
-You may notice that we didn't install or start the backend server. That is becauuse this app uses **Firebase Realtime Database** to handle the leaderboard in real-time — storing and updating scores instantly.  
-To keep things simple and make it easier for others to run and share this project:
+You may notice that we didn’t install or start the backend server. That’s because this app uses **Firebase Realtime Database** to manage the leaderboard, enabling real-time score updates without needing a custom backend.
 
-- We use the **Firebase Client SDK** (not the Admin SDK)
-- This means the database logic technically runs in the frontend
-- Even though a `backend/` folder is set up, it’s **not required** right now
-- Client-side code has permission to read and write leaderboard entries securely (via Firebase rules)
+To keep the project simple and easy to run or share:
+
+- We use the **Firebase Client SDK** instead of the Admin SDK, avoiding the need to share sensitive credentials
+- All database logic runs on the **client side**, within the browser
+- Although a `backend/` folder exists, it's currently **not required**
+- The Firebase setup is located at `frontend/src/utils/firebase.ts`
+- Client-side code has permission to read and write leaderboard entries securely, enforced through **Firebase security rules**
 
 ## 📄 License
 
